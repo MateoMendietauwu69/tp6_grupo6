@@ -11,37 +11,52 @@ import ar.edu.unju.escmi.tp6.dominio.Detalle;
 import ar.edu.unju.escmi.tp6.dominio.Factura;
 
 class CreditoTest {
-	
-	public static final int MONTO_1 = 500000;
-	public static final int MONTO_2 = 2000000;
-	public static final int MONTO_3 = 1000;
 
-	@Test
-	void testMontoCreditoValido() {
-		double montoObtenido = crearFactura().calcularTotal();
-		double montoPermitido = 1500000;
-		assertTrue(montoObtenido <= montoPermitido, "El monto total no debería superar al monto permitido");
-	}
-	
-	private Factura crearFactura() {
-		Factura factura = new Factura();
-		factura.setDetalles(crearListaDetalles());
-		return factura;
-	}
-	
-	private List<Detalle> crearListaDetalles(){
-		List<Detalle> listaDetalles = new ArrayList<Detalle>();
-		Detalle detalle1 = new Detalle();
-		detalle1.setImporte(MONTO_1);
-		Detalle detalle2 = new Detalle();
-		detalle2.setImporte(MONTO_2);
-		Detalle detalle3 = new Detalle();
-		detalle3.setImporte(MONTO_3);
-		listaDetalles.add(detalle1);
-		listaDetalles.add(detalle2);
-		listaDetalles.add(detalle3);
-		return listaDetalles;
-		
-	}
+    @Test
+    void testMontoCreditoValido() {
+        Factura factura = new Factura();
+        List<Detalle> detalles = new ArrayList<Detalle>();
 
+        Detalle detalle1 = new Detalle();
+        detalle1.setImporte(500000);
+
+        Detalle detalle2 = new Detalle();
+        detalle2.setImporte(900000);
+
+        Detalle detalle3 = new Detalle();
+        detalle3.setImporte(100000);
+
+        detalles.add(detalle1);
+        detalles.add(detalle2);
+        detalles.add(detalle3);
+
+        factura.setDetalles(detalles);
+
+        double obtenido = factura.calcularTotal();
+        double limitePermitido = 2500000;
+
+        assertTrue(obtenido <= limitePermitido);
+    }
+
+    @Test
+    void testSumaImportesDetallesIgualTotalFactura() {
+        Factura factura = new Factura();
+        List<Detalle> detalles = new ArrayList<Detalle>();
+
+        Detalle detalle1 = new Detalle();
+        detalle1.setImporte(500000);
+
+        Detalle detalle2 = new Detalle();
+        detalle2.setImporte(900000);
+
+        detalles.add(detalle1);
+        detalles.add(detalle2);
+
+        factura.setDetalles(detalles);
+
+        double expected = 1400000;
+        double obtenido = factura.calcularTotal();
+
+        assertEquals(expected, obtenido);
+    }
 }
