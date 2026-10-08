@@ -48,6 +48,10 @@ public class TarjetaCredito {
 		this.cliente = cliente;
 	}
 
+	public double getLimiteCompra() {
+		return limiteCompra;
+	}
+
 	public void setLimiteCompra(double limiteCompra) {
 		this.limiteCompra = limiteCompra;
 	}
