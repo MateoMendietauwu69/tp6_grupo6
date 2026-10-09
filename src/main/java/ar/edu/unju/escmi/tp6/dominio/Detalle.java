@@ -7,7 +7,6 @@ public class Detalle {
     private Producto producto;
 
     public Detalle() {
-
     }
 
     public Detalle(int cantidad, double importe, Producto producto) {

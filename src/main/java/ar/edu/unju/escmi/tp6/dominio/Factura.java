@@ -13,7 +13,6 @@ public class Factura {
     private List<Detalle> detalles = new ArrayList<Detalle>();
 
     public Factura() {
-
     }
 
     public Factura(LocalDate fecha, long nroFactura, Cliente cliente, List<Detalle> detalles) {

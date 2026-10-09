@@ -2,7 +2,6 @@ package ar.edu.unju.escmi.tp6.collections;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import ar.edu.unju.escmi.tp6.dominio.Factura;
 
 public class CollectionFactura {
