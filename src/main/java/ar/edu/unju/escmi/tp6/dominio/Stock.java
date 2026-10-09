@@ -23,7 +23,7 @@ public class Stock {
     public Producto getProducto() {
         return producto;
     }
-
+ 
     public void setProducto(Producto producto) {
         this.producto = producto;
     }

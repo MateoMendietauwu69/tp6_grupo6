@@ -33,7 +33,7 @@ public class Producto {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+ 
     public double getPrecioUnitario() {
         return precioUnitario;
     }
@@ -52,7 +52,6 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Codigo: " + codigo + " Descripcion: " + descripcion + " Precio Unitario: " + precioUnitario
-                + " Origen fabricacion: " + origenFabricacion;
+        return "Codigo: " + codigo + " Descripcion: " + descripcion + " Precio Unitario: " + precioUnitario + " Origen fabricacion: " + origenFabricacion;
     }
 }

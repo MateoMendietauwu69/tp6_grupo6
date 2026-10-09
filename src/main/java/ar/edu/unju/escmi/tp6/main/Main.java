@@ -84,9 +84,7 @@ public class Main {
 		System.out.println("=======================================================");
 	}
 
-	/**
-	 * Opción 1: Realizar una venta con programa "Ahora 20"
-	 */
+
 	private static void realizarVentaAhora20() {
 		System.out.println("\n--- Realizar Venta (Programa Ahora 20) ---");
 
@@ -165,7 +163,6 @@ public class Main {
 						boolean esCelular = producto.getDescripcion().toLowerCase().contains("celular")
 								|| producto.getDescripcion().toLowerCase().contains("teléfono");
 
-						// Validaciones de Límites del Programa Ahora 20
 						if (esCelular && (totalCelulares + subtotal > 1000000.0)) {
 							System.out.println(">>> Error: El límite para compra de teléfonos celulares en Ahora 20 es de $1.000.000.");
                             System.out.println("    Total celulares actual: $" + totalCelulares + " | Intentando agregar: $" + subtotal);
@@ -206,12 +203,10 @@ public class Main {
 			return;
 		}
 
-		// Registrar Factura
 		long nroFactura = CollectionFactura.facturas.size() + 1;
 		Factura factura = new Factura(LocalDate.now(), nroFactura, cliente, detalles);
 		CollectionFactura.agregarFactura(factura);
 
-		// Descontar Stock
 		for (Detalle d : detalles) {
 			Stock st = CollectionStock.buscarStock(d.getProducto());
 			if (st != null) {
@@ -219,12 +214,10 @@ public class Main {
 			}
 		}
 
-		// Generar Crédito en 20 cuotas
 		Credito credito = new Credito(tarjeta, factura, null);
 		credito.generarCuotas();
 		CollectionCredito.agregarCredito(credito);
 
-		// Actualizar el límite de la tarjeta de crédito
 		tarjeta.setLimiteCompra(tarjeta.getLimiteCompra() - factura.calcularTotal());
 
 		System.out.println("\n=======================================================");
@@ -236,9 +229,6 @@ public class Main {
 		System.out.println("Límite restante disponible en Tarjeta N° " + tarjeta.getNumero() + ": $" + tarjeta.getLimiteCompra());
 	}
 
-	/**
-	 * Opción 2: Ver compras realizadas por el cliente
-	 */
 	private static void verComprasCliente() {
 		System.out.println("\n--- Consultar Compras de Cliente ---");
 		long dni = pedirLong("Ingrese el DNI del cliente: ");
@@ -260,9 +250,6 @@ public class Main {
 		}
 	}
 
-	/**
-	 * Opción 3: Lista de electrodomésticos que se pueden comprar con Ahora 20
-	 */
 	private static void mostrarListaElectrodomesticosAhora20() {
 		System.out.println("\n==========================================================================");
 		System.out.println("   LISTA DE ELECTRODOMÉSTICOS INCLUIDOS EN EL PROGRAMA 'AHORA 20'");
@@ -285,9 +272,6 @@ public class Main {
 		}
 	}
 
-	/**
-	 * Opción 4: Consultar stock de los electrodomésticos del programa
-	 */
 	private static void consultarStockElectrodomesticos() {
 		System.out.println("\n==========================================================================");
 		System.out.println("        STOCK DE ELECTRODOMÉSTICOS INCLUIDOS EN EL PROGRAMA");
@@ -307,9 +291,6 @@ public class Main {
 		}
 	}
 
-	/**
-	 * Opción 5: Revisar los créditos de un cliente
-	 */
 	private static void revisarCreditosCliente() {
 		System.out.println("\n--- Revisar Créditos de Cliente ---");
 		long dni = pedirLong("Ingrese el DNI del cliente: ");
@@ -358,7 +339,7 @@ public class Main {
 			} catch (NumberFormatException e) {
 				System.out.println(">>> Error: Ingrese un número entero válido (sin letras ni caracteres especiales).");
 			} finally {
-				// Bloque de limpieza o log si fuera necesario
+				// Bloque de limpieza
 			}
 		}
 		return valor;

@@ -2,7 +2,6 @@ package ar.edu.unju.escmi.tp6.collections;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import ar.edu.unju.escmi.tp6.dominio.Producto;
 import ar.edu.unju.escmi.tp6.dominio.Stock;
 
@@ -92,6 +91,6 @@ public class CollectionStock {
 			return null;
 		}
 		
-		return stockTotal;
+		return stockTotal; 
 	}
 }
