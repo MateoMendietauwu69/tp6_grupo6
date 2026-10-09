@@ -1,0 +1,17 @@
+4.- Responda las siguientes preguntas:
+a) ¿Por qué no se dibuja la relación de agregación entre la clase CollectionProducto y
+Producto?
+-No se dibuja la relación ya que esta especificada directamente como atributo
+b) ¿Cuántos atributos tiene la clase Factura? ¿Cuáles son los nombres de esos
+atributos?
+-Inicialmente tiene 2 atributos: nroFactura, fecha pero también hay que contar el de: detalles haciendo una cantidad de 3 atributos
+c) ¿Cómo se llama la relación que se establece entre Factura y Detalle?
+-A la relación de Factura y Detalle se la llama Composición, que seria el rombo negro en el extremo de la clase
+d) ¿Cómo se llama la relación entre las clases Factura y Cliente?
+-La relación se llama de composición otra vez
+e) ¿Por qué los atributos de las clases Collections son públicos?
+-Los atributos de la clase collection se los declara públicos para el acceso directo y la gestión de los elementos almacenados en la memoria del sistema
+f) Describa las características de todos los métodos de la clase CollectionClientes.
+-De agregarCliente: recibe una instancia d tipo cliente y la incorpora a la colección
+ De buscarCliente: recorre la colección buscando por el DNI para retornar el cliente
+ De precargarClientes: inicializa y puebla la colección con un conjunto predefinido de clientes para agilizar las pruebas de ejecucion
