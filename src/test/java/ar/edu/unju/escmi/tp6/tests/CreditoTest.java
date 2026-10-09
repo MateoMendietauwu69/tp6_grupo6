@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import ar.edu.unju.escmi.tp6.dominio.Detalle;
 import ar.edu.unju.escmi.tp6.dominio.Factura;
+import ar.edu.unju.escmi.tp6.dominio.TarjetaCredito;
 
 class CreditoTest {
 
@@ -58,5 +59,26 @@ class CreditoTest {
         double obtenido = factura.calcularTotal();
 
         assertEquals(expected, obtenido);
+    }
+
+    @Test
+    void testMontoTotalNoSuperaLimiteCreditoYLimiteTarjeta() {
+        Factura factura = new Factura();
+        List<Detalle> detalles = new ArrayList<Detalle>();
+
+        Detalle detalle1 = new Detalle();
+        detalle1.setImporte(500000);
+
+        detalles.add(detalle1);
+        factura.setDetalles(detalles);
+
+        TarjetaCredito tarjeta = new TarjetaCredito();
+        tarjeta.setLimiteCompra(800000);
+
+        double totalFactura = factura.calcularTotal();
+        double limiteCreditoAhora20 = 2500000;
+
+        assertTrue(totalFactura <= limiteCreditoAhora20);
+        assertTrue(totalFactura <= tarjeta.getLimiteCompra());
     }
 }
